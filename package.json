@@ -1,0 +1,33 @@
+{
+  "name": "xpense",
+  "type": "module",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "node ./server/index.js && node ./server/index.js",
+    "dev": "vite",
+    "backend": "nodemon ./server/index.js",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@azure/cosmos": "^4.0.0",
+    "@mdi/font": "7.0.96",
+    "axios": "^1.6.8",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "roboto-fontface": "*",
+    "vue": "^3.4.0",
+    "vuetify": "^3.5.0",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "nodemon": "^3.1.0",
+    "sass": "^1.71.1",
+    "unplugin-fonts": "^1.1.1",
+    "unplugin-vue-components": "^0.26.0",
+    "vite": "^5.1.5",
+    "vite-plugin-vuetify": "^2.0.3"
+  }
+}
