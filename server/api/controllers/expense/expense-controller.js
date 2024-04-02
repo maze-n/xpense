@@ -1,11 +1,13 @@
 import { cosmos } from "../../../db/index.js";
 
+const database = cosmos.database('xpense');
+const container = database.container('expenses');
+
 export async function listExpenses(req, res, next) {
     const querySpec = { query: "SELECT * FROM expenses c ORDER BY c.createdAt DESC" };
 
     try {
-        const { resources } = await cosmos.database('xpense')
-            .container('expenses')
+        const { resources } = await container
             .items
             .query(querySpec)
             .fetchAll();
@@ -28,8 +30,7 @@ export async function createExpense(req, res, next) {
 
         const now = new Date()
 
-        await cosmos.database('xpense')
-            .container('expenses')
+        await container
             .items.create({ title, amount: Number(amount), createdAt: now.toISOString() })
 
         return res.status(200).json({ info: "Item deleted successfully!" });
@@ -50,10 +51,9 @@ export async function editExpense(req, res, next) {
             return res.status(422).json({ error: "Please send both title and amount" })
         }
 
-        const item = await cosmos.database('xpense').container('expenses').item(id, id).read();
+        const item = await container.item(id, id).read();
 
-        await cosmos.database('xpense')
-            .container('expenses')
+        await container
             .item(id, id).replace({ id, title, amount, createdAt: item.resource.createdAt })
 
         return res.status(200).json({ info: "Item updated successfully!" });
@@ -67,8 +67,7 @@ export async function deleteExpense(req, res, next) {
     const { id } = req.params;
 
     try {
-        await cosmos.database('xpense')
-            .container('expenses')
+        await container
             .item(id, id)
             .delete()
 

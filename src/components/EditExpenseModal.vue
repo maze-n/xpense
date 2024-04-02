@@ -95,7 +95,7 @@ export default {
                 <v-spacer></v-spacer>
 
                 <v-btn text="Cancel" @click="showDialog = false" />
-                <v-btn text="Create" @click="handleUpdateExpense" />
+                <v-btn text="Update" @click="handleUpdateExpense" />
             </v-card-actions>
         </v-card>
     </v-dialog>
