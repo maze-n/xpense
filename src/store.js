@@ -1,7 +1,6 @@
 import { createStore } from 'vuex';
 import axios from 'axios';
-
-const apiURL = 'http://localhost:8000'
+import { apiURL } from './utils/constants';
 
 const store = createStore({
     state() {
