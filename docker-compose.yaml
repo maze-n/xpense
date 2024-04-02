@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  server:
+    build: ./server
+    expose:
+      - 8000
+    ports:
+      - 8000:8000
+    volumes:
+      - ./server/:/server
+    command: npm run backend
+
+  client:
+    build: ./src
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src/:/client
+    links:
+      - server
+    command:
+      npm run dev
