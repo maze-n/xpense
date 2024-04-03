@@ -12,6 +12,7 @@
   "dependencies": {
     "@azure/cosmos": "^4.0.0",
     "@mdi/font": "7.0.96",
+    "@rollup/rollup-linux-x64-gnu": "^4.14.0",
     "axios": "^1.6.8",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",

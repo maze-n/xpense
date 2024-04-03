@@ -6,15 +6,12 @@ RUN mkdir -p /client/src
 WORKDIR /client
 
 COPY ../package.json /client/
-COPY ../yarn.lock /client/
 
-RUN npm install
+RUN yarn
 
 COPY ../src/ /client/src
 COPY ../public /client/
 COPY ../index.html ../jsconfig.json ../vite.config.mjs ../.env /client/
 
-RUN npm run build
-
-CMD [ "http-server", "dist" ]
-EXPOSE 3000:8080
+CMD [ "yarn", "dev" ]
+EXPOSE 3000
