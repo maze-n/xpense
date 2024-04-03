@@ -3,7 +3,6 @@ import cors from "cors";
 import appRouter from "./routes/index.js";
 import { initializeDB } from "./db/index.js";
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 const PORT = 8000;
 const app = express();
 app.use(cors());

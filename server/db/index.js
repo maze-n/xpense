@@ -1,11 +1,12 @@
 import { CosmosClient } from "@azure/cosmos";
 import * as dotenv from "dotenv";
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 dotenv.config({ path: "./server/.env" });
 
 export const cosmos = new CosmosClient({
   endpoint: process.env.DATABASE_URL,
-  key: "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==",
+  key: process.env.DATABASE_KEY,
 });
 
 async function initializeDB() {

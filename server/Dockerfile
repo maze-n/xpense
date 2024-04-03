@@ -1,13 +1,15 @@
 FROM node:18-alpine
 
-RUN mkdir -p /server
-WORKDIR /server
+RUN mkdir -p /app
+RUN mkdir -p /app/server
+WORKDIR /app
 
-COPY ../package.json /server/
-COPY ../yarn.lock /server/
+COPY ../package.json /app/
+COPY ../yarn.lock /app/
 
 RUN npm install
 
-COPY ../server/ /server/
+COPY ../server/ /app/server/
 
-CMD ["npm", "run", "backend"]
+CMD ["npm", "run", "backend:prod"]
+EXPOSE 8000:8000
