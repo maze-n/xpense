@@ -25,8 +25,9 @@ services:
       - 8000:8000
     volumes:
       - ./server/:/server
-    command: npm run backend:dev
-    links:
+    command:
+      npm run backend:dev
+    depends_on:
       - cosmos
 
   client:
@@ -40,7 +41,7 @@ services:
       - 3000:3000
     volumes:
       - ./:/client
-    links:
-      - server
     command:
       npm run dev
+    depends_on:
+      - server
